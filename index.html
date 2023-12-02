@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather App</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>A Little Weather Forecaster</h1>
+        <div class="des-box">
+          <p class="des">Enter a location below to see current conditions and a three day forecast.</p>
+          <form>
+            <label for="locale">Location:
+              <input type="text" name="locale" id="user-locale">
+            </label>
+            <button>Go!</button>
+          </form>
+        </div>
+      </header>
+      <section id="display">
+        <div class="top-display">
+          <div class="location-box">
+            <h2 class="location">Portland, OR</h2>
+            <div>
+              <!-- <p>Today</p> -->
+              <p>12/01/2023</p>
+            </div>
+          </div>
+          <div class="temps">
+            <div class="temp-unit-box">
+              <p class="current">now: 44</p>
+              <p class="unit">F</p>
+            </div>
+            <div class="temp-unit-box">
+              <!-- <p class="precipitation">Precipitation:</p> -->
+              <img src="#" alt="precipitation icon">
+            </div>
+            <div class="temp-unit-box">
+              <p class="low">Low: 32</p>
+              <p class="unit">F</p>
+            </div>
+            <div class="temp-unit-box">
+              <p class="high">High: 51</p>
+              <p class="unit">F</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-box">
+          <div>
+            <p>12/02/2023</p>
+            <div class="temps">
+              <div class="temp-unit-box">
+                <p class="current">now: 44</p>
+                <p class="unit">F</p>
+              </div>
+              <div class="temp-unit-box">
+                <!-- <p class="precipitation">Precipitation:</p> -->
+                <img src="#" alt="precipitation icon">
+              </div>
+              <div class="temp-unit-box">
+                <p class="low">Low: 32</p>
+                <p class="unit">F</p>
+              </div>
+              <div class="temp-unit-box">
+                <p class="high">High: 51</p>
+                <p class="unit">F</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>12/03/2023</p>
+
+            <div class="temps">
+              <div class="temp-unit-box">
+                <p class="current">now: 44</p>
+                <p class="unit">F</p>
+              </div>
+              <div class="temp-unit-box">
+                <img src="#" alt="precipitation icon">
+              </div>
+              <div class="temp-unit-box">
+                <p class="low">Low: 32</p>
+                <p class="unit">F</p>
+              </div>
+              <div class="temp-unit-box">
+                <p class="high">High: 51</p>
+                <p class="unit">F</p>
+              </div>
+
+            </div>
+          </div>
+          <div>
+            <p>12/04/2023</p>
+            <div class="temps">
+              <div class="temp-unit-box">
+                <p class="current">now: 44</p>
+                <p class="unit">F</p>
+              </div>
+              <div class="temp-unit-box">
+                <img src="#" alt="precipitation icon">
+              </div>
+              <div class="temp-unit-box">
+                <p class="low">Low: 32</p>
+                <p class="unit">F</p>
+              </div>
+              <div class="temp-unit-box">
+                <p class="high">High: 51</p>
+                <p class="unit">F</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </body>
+
+</html>
