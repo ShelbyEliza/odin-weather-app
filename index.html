@@ -7,6 +7,8 @@
     <script src="./index.js" defer type="module"></script>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Weather App</title>
   </head>
 
@@ -20,104 +22,184 @@
             <label for="locale">Location:
               <input type="text" name="locale" id="user-locale">
             </label>
-            <button>Go!</button>
+            <button id="search-btn">Go!</button>
           </form>
         </div>
       </header>
       <section id="display">
-        <div class="top-display">
-          <div class="location-box">
-            <h2 id="location">Portland, OR</h2>
-            <div>
-              <!-- <p>Today</p> -->
-              <p>12/01/2023</p>
+        <div class="info-container">
+          <div id="top-box">
+            <div id="left-top-box">
+              <h2 id="location">Fayetteville, AR</h2>
+              <div class="current-date-container">
+                <p id="current-date" class="date">12/07/23</p>
+              </div>
             </div>
-          </div>
-          <div class="temps">
-            <div class="temp-unit-box">
-              <p class="current">now: 44</p>
-              <p class="unit">F</p>
-            </div>
-            <div class="temp-unit-box">
-              <!-- <p class="precipitation">Precipitation:</p> -->
-              <img src="#" alt="precipitation icon">
-            </div>
-            <div class="temp-unit-box">
-              <p class="low">Low: 32</p>
-              <p class="unit">F</p>
-            </div>
-            <div class="temp-unit-box">
-              <p class="high">High: 51</p>
-              <p class="unit">F</p>
-            </div>
-          </div>
-        </div>
+            <div id="current-box">
 
-        <div class="forecast-box">
-          <div>
-            <p>12/02/2023</p>
-            <div class="temps">
-              <div class="temp-unit-box">
-                <p class="current">now: 44</p>
-                <p class="unit">F</p>
+              <div id="current-top-box">
+                <h2>Currently</h2>
+                <div class="condition-box">
+                  <img src="#" id="current-cond" alt="current conditions">
+                </div>
+                <div class="temp-unit-box">
+                  <p class="temp" id="current-temp">60</p>
+                  <p class="unit">F</p>
+                </div>
               </div>
-              <div class="temp-unit-box">
-                <!-- <p class="precipitation">Precipitation:</p> -->
-                <img src="#" alt="precipitation icon">
-              </div>
-              <div class="temp-unit-box">
-                <p class="low">Low: 32</p>
-                <p class="unit">F</p>
-              </div>
-              <div class="temp-unit-box">
-                <p class="high">High: 51</p>
-                <p class="unit">F</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p>12/03/2023</p>
-
-            <div class="temps">
-              <div class="temp-unit-box">
-                <p class="current">now: 44</p>
-                <p class="unit">F</p>
-              </div>
-              <div class="temp-unit-box">
-                <img src="#" alt="precipitation icon">
-              </div>
-              <div class="temp-unit-box">
-                <p class="low">Low: 32</p>
-                <p class="unit">F</p>
-              </div>
-              <div class="temp-unit-box">
-                <p class="high">High: 51</p>
-                <p class="unit">F</p>
-              </div>
-
-            </div>
-          </div>
-          <div>
-            <p>12/04/2023</p>
-            <div class="temps">
-              <div class="temp-unit-box">
-                <p class="current">now: 44</p>
-                <p class="unit">F</p>
-              </div>
-              <div class="temp-unit-box">
-                <img src="#" alt="precipitation icon">
-              </div>
-              <div class="temp-unit-box">
-                <p class="low">Low: 32</p>
-                <p class="unit">F</p>
-              </div>
-              <div class="temp-unit-box">
-                <p class="high">High: 51</p>
-                <p class="unit">F</p>
+              <div>
+                <div class="humidity-unit-box-current">
+                  <p id="current-humidity">90%</p>
+                  <p class="humidity-label">Humidity</p>
+                </div>
+                <p id="current-description">Raining with a chance of thunderstorms</p>
               </div>
             </div>
           </div>
 
+          <div class="forecast-box">
+            <!-- today starts -->
+            <div class="forecast-day-box" id="today-box">
+              <div class="date-container">
+                <p class="date-label">Today</p>
+                <p class="f-date">12/07/23</p>
+              </div>
+              <div class="temps">
+                <div class="temp-unit-box">
+                  <p class="avg-label">Avg</p>
+                  <p class="temp avg f-avg">60</p>
+                  <p class="unit">F</p>
+                </div>
+                <div class="condition-box">
+                  <img src="#" alt="conditions" class="f-conditions">
+                </div>
+                <div class="temp-unit-box low-box">
+                  <p class="low-label">L</p>
+                  <p class="temp low f-min">40</p>
+                  <p class="unit">F</p>
+                </div>
+                <div class="temp-unit-box high-box">
+                  <p class="high-label">H</p>
+                  <p class="temp high f-max">68</p>
+                  <p class="unit">F</p>
+                </div>
+                <div class="chance-box">
+                  <p class="rain-chance label">Rain Chance</p>
+                  <p class="rain-chance val f-rain-chance">100%</p>
+                </div>
+                <div class="total-rain-box">
+                  <p class="total-rain label">Total Rain</p>
+                  <p class="val f-rain-total">1.0 in</p>
+                </div>
+                <div class="chance-box">
+                  <p class="snow-chance label">Snow Chance </p>
+                  <p class="snow-chance val f-snow-chance">0%</p>
+                </div>
+                <div class="total-snow-box">
+                  <p class="total-snow label">Total Snow</p>
+                  <p class="val f-snow-total">0 in</p>
+                </div>
+                <div class="humidity-unit-box-forecast">
+                  <p class="f-humidity">100%</p>
+                  <p class="humidity-label">Humidity</p>
+                </div>
+              </div>
+            </div>
+            <!-- tomorrow starts -->
+            <div class="forecast-day-box" id="tomorrow-box">
+              <div class="date-container">
+                <p class="date-label">Tomorrow</p>
+                <p class="f-date">12/08/23</p>
+              </div>
+              <div class="temps">
+                <div class="temp-unit-box">
+                  <p class="avg-label">Avg</p>
+                  <p class="temp avg f-avg">60</p>
+                  <p class="unit">F</p>
+                </div>
+                <div class="condition-box">
+                  <img src="#" alt="conditions" class="f-conditions">
+                </div>
+                <div class="temp-unit-box low-box">
+                  <p class="low-label">L</p>
+                  <p class="temp low f-min">40</p>
+                  <p class="unit">F</p>
+                </div>
+                <div class="temp-unit-box high-box">
+                  <p class="high-label">H</p>
+                  <p class="temp high f-max">68</p>
+                  <p class="unit">F</p>
+                </div>
+                <div class="chance-box">
+                  <p class="rain-chance label">Rain Chance</p>
+                  <p class="rain-chance val f-rain-chance">100%</p>
+                </div>
+                <div class="total-rain-box">
+                  <p class="total-rain label">Total Rain</p>
+                  <p class="val f-rain-total">1.0 in</p>
+                </div>
+                <div class="chance-box">
+                  <p class="snow-chance label">Snow Chance </p>
+                  <p class="snow-chance val f-snow-chance">0%</p>
+                </div>
+                <div class="total-snow-box">
+                  <p class="total-snow label">Total Snow</p>
+                  <p class="val f-snow-total">0 in</p>
+                </div>
+                <div class="humidity-unit-box-forecast">
+                  <p class="f-humidity">100%</p>
+                  <p class="humidity-label">Humidity</p>
+                </div>
+              </div>
+            </div>
+            <!-- next day starts -->
+            <div class="forecast-day-box" id="next-day-box">
+              <div class="date-container">
+                <p class="date-label">Next Day</p>
+                <p class="f-date">12/09/23</p>
+              </div>
+              <div class="temps">
+                <div class="temp-unit-box">
+                  <p class="avg-label">Avg</p>
+                  <p class="temp avg f-avg">60</p>
+                  <p class="unit">F</p>
+                </div>
+                <div class="condition-box">
+                  <img src="#" alt="conditions" class="f-conditions">
+                </div>
+                <div class="temp-unit-box low-box">
+                  <p class="low-label">L</p>
+                  <p class="temp low f-min">40</p>
+                  <p class="unit">F</p>
+                </div>
+                <div class="temp-unit-box high-box">
+                  <p class="high-label">H</p>
+                  <p class="temp high f-max">68</p>
+                  <p class="unit">F</p>
+                </div>
+                <div class="chance-box">
+                  <p class="rain-chance label">Rain Chance</p>
+                  <p class="rain-chance val f-rain-chance">100%</p>
+                </div>
+                <div class="total-rain-box">
+                  <p class="total-rain label">Total Rain</p>
+                  <p class="val f-rain-total">1.0 in</p>
+                </div>
+                <div class="chance-box">
+                  <p class="snow-chance label">Snow Chance </p>
+                  <p class="snow-chance val f-snow-chance">0%</p>
+                </div>
+                <div class="total-snow-box">
+                  <p class="total-snow label">Total Snow</p>
+                  <p class="val f-snow-total">0 in</p>
+                </div>
+                <div class="humidity-unit-box-forecast">
+                  <p class="f-humidity">100%</p>
+                  <p class="humidity-label">Humidity</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

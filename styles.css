@@ -19,6 +19,11 @@ body {
 
 	background: var(--stardust-evening);
 }
+
+.material-symbols-outlined {
+	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
@@ -99,52 +104,89 @@ button:hover {
 	cursor: pointer;
 }
 #display {
-	border: 1px solid white;
-	padding: 1rem;
 	border-radius: 1rem;
 	width: 80%;
 }
-
+#top-box {
+	display: flex;
+	border-bottom: 1px solid white;
+	justify-content: space-between;
+	background-color: var(--naval-night);
+	color: white;
+	border-top-right-radius: 1rem;
+	border-top-left-radius: 1rem;
+	padding: 1rem;
+}
+#left-top-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+#current-top-box {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	align-items: center;
+}
 .forecast-box {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 }
-.temp-unit-box {
-	display: flex;
+.forecast-day-box {
 	border: 1px solid white;
+	border-bottom-right-radius: 1rem;
+	border-bottom-left-radius: 1rem;
 }
-.top-display {
+.date-container {
+	padding-top: 0.2rem;
+	padding-bottom: 0.4rem;
+
+	background-color: aquamarine;
+	color: var(--naval-night);
+	text-align: center;
+}
+.date-label {
+	font-size: 1.2rem;
+}
+.temp-unit-box,
+.humidity-unit-box-current {
 	display: flex;
-	border-bottom: 1px solid white;
+	justify-content: center;
+}
+.humidity-unit-box-current {
+	gap: 1ch;
+	justify-content: flex-end;
 }
 .temps {
 	display: grid;
-	margin-left: auto;
 	grid-template-columns: 1fr 1fr;
-	/* grid-template-rows: masonry; */
-}
-/** Not used yet: 
+	justify-items: center;
 
-img {
-	max-width: 30rem;
-	height: auto;
-	border-radius: 0.8rem;
+	padding: 1rem 0.8rem;
+	gap: 0.4rem;
 }
-
-.img-frame {
+.avg,
+.high,
+.low {
+	margin-left: 1ch;
+	/* border: 1px solid white; */
+}
+.high {
+	color: red;
+}
+.low {
+	color: blue;
+}
+.humidity-unit-box-forecast {
 	display: flex;
 	justify-content: center;
-	align-items: center;
-
-	border-radius: 0.8rem;
-	border: 1px solid var(--naval-night);
+	grid-column: 1 / 3;
+	gap: 1ch;
 }
 
-#message {
+.label {
+	font-size: 0.8rem;
+}
+.val {
 	text-align: center;
-	max-width: 60ch;
-	border: 1px solid var(--morocco);
-	padding: 1rem 2rem;
-	border-radius: 0.8rem;
 }
-*/
