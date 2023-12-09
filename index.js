@@ -5,19 +5,45 @@ import {
 	ForecastInfo,
 } from './modules/weatherClasses.js';
 import {
-	setLocation,
-	setCurrent,
-	setForecast,
-} from './modules/template_HTML.js';
+	setLocationDOM,
+	setCurrentDOM,
+	setForecastDOM,
+	switchCurrentUnits,
+	switchForecastUnits,
+} from './modules/setDOM.js';
 
 const searchBtn = document.getElementById('search-btn');
+const radioBtns = document.querySelectorAll('input[type=radio]');
+const unitEls = Array.from(document.querySelectorAll('.unit'));
 
-searchBtn.addEventListener('click', (e) => {
+let unitSelected = 'fahrenheit';
+
+searchBtn.addEventListener('click', async (e) => {
 	e.preventDefault();
-	search();
+	let userQ = search();
+	try {
+		await performSearch(userQ);
+	} catch (err) {
+		if (err) {
+			console.log(err);
+		} else {
+			console.log('Something went wrong. Please try again.');
+		}
+	}
 });
 
-let locale = 'Portland+oregon';
+radioBtns.forEach((btn) => {
+	btn.addEventListener('change', (e) => {
+		unitSelected = e.target.value;
+		unitEls.forEach((el) => {
+			el.textContent = e.target.value[0].toUpperCase();
+		});
+		switchCurrentUnits(unitSelected, currentInfo);
+		switchForecastUnits(unitSelected, forecastInfo);
+	});
+});
+
+let locale = 'Portland+Oregon';
 const base_URL = 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=';
 const ending_URL = '&days=3';
 /** url examples
@@ -44,7 +70,6 @@ async function getWeatherData(location) {
 }
 
 async function buildInfo(data) {
-	console.log(data);
 	const locationInfo = new LocationInfo(data);
 	const currentInfo = new CurrentInfo(data.current);
 	const forecastInfo = await setForecastInfo(data.forecast.forecastday);
@@ -61,15 +86,21 @@ async function setForecastInfo(daysData) {
 
 	return forecastInfos;
 }
-async function logInfo(weather, current, forecast) {
-	console.log({ weather, current, forecast });
+
+async function performSearch(userQuery) {
+	const weatherData = await getWeatherData(userQuery);
+	const { locationInfo, currentInfo, forecastInfo } = await buildInfo(
+		weatherData
+	);
+	await setLocationDOM(locationInfo);
+	await setCurrentDOM(currentInfo, unitSelected);
+	await setForecastDOM(forecastInfo, unitSelected);
 }
 
-// const weatherData = await getWeatherData(locale);
-// const { locationInfo, currentInfo, forecastInfo } = await buildInfo(
-// 	weatherData
-// );
-// await logInfo(locationInfo, currentInfo, forecastInfo);
-// await setLocation(locationInfo);
-// await setCurrent(currentInfo);
-// await setForecast(forecastInfo);
+const weatherData = await getWeatherData(locale);
+const { locationInfo, currentInfo, forecastInfo } = await buildInfo(
+	weatherData
+);
+await setLocationDOM(locationInfo);
+await setCurrentDOM(currentInfo, unitSelected);
+await setForecastDOM(forecastInfo, unitSelected);
