@@ -1,3 +1,15 @@
+import { format } from 'date-fns';
+
+function formatDate(dateGiven) {
+	let dateArray = dateGiven.split('-');
+	let newDate = new Date(
+		dateArray[1] + '/' + dateArray[2] + '/' + dateArray[0]
+	);
+
+	let formattedDate = format(newDate, 'EEEE-MMMM dd, yyyy').split('-');
+	return { dayOfWeek: formattedDate[0], date: formattedDate[1] };
+}
+
 class LocationInfo {
 	constructor(data) {
 		this.city = data.location.name;
@@ -7,7 +19,10 @@ class LocationInfo {
 
 class CurrentInfo {
 	constructor(current) {
-		this.date = current.last_updated;
+		// console.log(current);
+		this.fullDateObj = formatDate(this.removeTime(current.last_updated));
+		this.date = this.fullDateObj.date;
+		this.dayOfWeek = this.fullDateObj.dayOfWeek;
 		this.temp_C = current.temp_c;
 		this.temp_F = current.temp_f;
 		this.currentConditionText = current.condition.text;
@@ -15,12 +30,18 @@ class CurrentInfo {
 		this.precip = current.precip_in;
 		this.humidity = current.humidity;
 	}
+	removeTime(date) {
+		let regex = /^[\d-]*(?<!\s)/g;
+		return date.match(regex)[0];
+	}
 }
 
 class ForecastInfo {
 	constructor(date) {
 		let day = date.day;
-		this.date = date.date;
+		this.fullDateObj = formatDate(date.date);
+		this.date = this.fullDateObj.date;
+		this.dayOfWeek = this.fullDateObj.dayOfWeek;
 		this.maxTemp_C = day.maxtemp_c;
 		this.minTemp_C = day.mintemp_c;
 		this.maxTemp_F = day.maxtemp_f;

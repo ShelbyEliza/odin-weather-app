@@ -7,6 +7,7 @@ const currentDescription = document.getElementById('current-description');
 
 let elsObj = {
 	dates: Array.from(document.querySelectorAll('.f-date')),
+	days: Array.from(document.querySelectorAll('.f-day-of-week')),
 	avgs: Array.from(document.querySelectorAll('.f-avg')),
 	mins: Array.from(document.querySelectorAll('.f-min')),
 	maxes: Array.from(document.querySelectorAll('.f-max')),
@@ -17,6 +18,8 @@ let elsObj = {
 	humidities: Array.from(document.querySelectorAll('.f-humidity')),
 	conditions: Array.from(document.querySelectorAll('.f-conditions')),
 };
+
+const degreeSymbol = '\u00B0';
 
 async function setLocationDOM(locationInfo) {
 	locationTitle.textContent = locationInfo.city + ', ' + locationInfo.region;
@@ -35,7 +38,9 @@ async function setCurrentDOM(currentInfo, unitSelected) {
 
 async function setForecastDOM(forecastInfos, unitSelected) {
 	for (let i = 0; i < 3; i++) {
+		// console.log(forecastInfos[i]);
 		elsObj.dates[i].textContent = forecastInfos[i].date;
+		elsObj.days[i].textContent = forecastInfos[i].dayOfWeek;
 		switchForecastUnits(unitSelected, forecastInfos);
 
 		elsObj.rainChances[i].textContent = forecastInfos[i].rainChance + '%';

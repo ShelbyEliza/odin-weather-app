@@ -4,9 +4,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./index.js" defer type="module"></script>
+    <script src="main.js" defer></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../src/styles.css">
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Weather App</title>
@@ -50,7 +50,7 @@
               <img src="#" id="current-cond" alt="current conditions">
             </div>
             <div class="temp-unit-box current">
-              <p class="temp" id="current-temp">60</p>
+              <p class="temp" id="current-temp">60 0xC2</p>
               <p class="unit">F</p>
             </div>
             <div class="humidity-unit-box current">
@@ -64,8 +64,10 @@
         <div class="forecast-box">
           <!-- today starts -->
           <div class="forecast-day-box" id="today-box">
+
             <div class="date-container">
               <p class="date-label">Today</p>
+              <p class="f-day-of-week">Monday</p>
               <p class="f-date">12/07/23</p>
             </div>
             <div class="temps">
@@ -113,6 +115,7 @@
           <div class="forecast-day-box" id="tomorrow-box">
             <div class="date-container">
               <p class="date-label">Tomorrow</p>
+              <p class="f-day-of-week">Tuesday</p>
               <p class="f-date">12/08/23</p>
             </div>
             <div class="temps">
@@ -160,6 +163,7 @@
           <div class="forecast-day-box" id="next-day-box">
             <div class="date-container">
               <p class="date-label">Next Day</p>
+              <p class="f-day-of-week">Wednesday</p>
               <p class="f-date">12/09/23</p>
             </div>
             <div class="temps">
