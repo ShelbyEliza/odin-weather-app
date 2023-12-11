@@ -1,3 +1,6 @@
+// import { formatNewDate } from './modules/formatDate.js';
+// import { format } from 'date-fns';
+
 import search from './modules/search.js';
 import {
 	LocationInfo,
@@ -97,10 +100,26 @@ async function performSearch(userQuery) {
 	await setForecastDOM(forecastInfo, unitSelected);
 }
 
-const weatherData = await getWeatherData(locale);
-const { locationInfo, currentInfo, forecastInfo } = await buildInfo(
-	weatherData
+// const weatherData = await getWeatherData(locale);
+// const { locationInfo, currentInfo, forecastInfo } = await buildInfo(
+// 	weatherData
+// );
+// await setLocationDOM(locationInfo);
+// await setCurrentDOM(currentInfo, unitSelected);
+// await setForecastDOM(forecastInfo, unitSelected);
+await setCurrentDOM(
+	{
+		date: '2023-12-11 11:00',
+		temp_C: 9.4,
+		temp_F: 48.9,
+		currentConditionText: 'Light rain',
+		currentConditionIcon: '//cdn.weatherapi.com/weather/64x64/day/296.png',
+		precip: 0,
+		humidity: 90,
+	},
+	unitSelected
 );
-await setLocationDOM(locationInfo);
-await setCurrentDOM(currentInfo, unitSelected);
-await setForecastDOM(forecastInfo, unitSelected);
+
+await setLocationDOM({ city: 'Portland', region: 'Oregon' });
+
+// formatNewDate();

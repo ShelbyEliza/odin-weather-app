@@ -30,6 +30,7 @@ async function setCurrentDOM(currentInfo, unitSelected) {
 
 	currentHumidity.textContent = currentInfo.humidity + '%';
 	currentDescription.textContent = currentInfo.currentConditionText;
+	// console.log(currentInfo);
 }
 
 async function setForecastDOM(forecastInfos, unitSelected) {
