@@ -56,22 +56,22 @@ async function setForecastDOM(forecastInfos, unitSelected) {
 async function switchForecastUnits(unitSelected, forecastInfos) {
 	for (let i = 0; i < 3; i++) {
 		if (unitSelected === 'fahrenheit') {
-			elsObj.avgs[i].textContent = forecastInfos[i].avgTemp_F;
-			elsObj.mins[i].textContent = forecastInfos[i].minTemp_F;
-			elsObj.maxes[i].textContent = forecastInfos[i].maxTemp_F;
+			elsObj.avgs[i].textContent = forecastInfos[i].avgTemp_F + degreeSymbol;
+			elsObj.mins[i].textContent = forecastInfos[i].minTemp_F + degreeSymbol;
+			elsObj.maxes[i].textContent = forecastInfos[i].maxTemp_F + degreeSymbol;
 		} else {
-			elsObj.avgs[i].textContent = forecastInfos[i].avgTemp_C;
-			elsObj.mins[i].textContent = forecastInfos[i].minTemp_C;
-			elsObj.maxes[i].textContent = forecastInfos[i].maxTemp_C;
+			elsObj.avgs[i].textContent = forecastInfos[i].avgTemp_C + degreeSymbol;
+			elsObj.mins[i].textContent = forecastInfos[i].minTemp_C + degreeSymbol;
+			elsObj.maxes[i].textContent = forecastInfos[i].maxTemp_C + degreeSymbol;
 		}
 	}
 }
 
 async function switchCurrentUnits(unitSelected, currentInfo) {
 	if (unitSelected === 'fahrenheit') {
-		currentTemp.textContent = currentInfo.temp_F;
+		currentTemp.textContent = currentInfo.temp_F + degreeSymbol;
 	} else {
-		currentTemp.textContent = currentInfo.temp_C;
+		currentTemp.textContent = currentInfo.temp_C + degreeSymbol;
 	}
 }
 

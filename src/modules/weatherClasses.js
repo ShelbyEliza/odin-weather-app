@@ -1,5 +1,15 @@
 import { format } from 'date-fns';
 
+/** TODO: stopped at moderate or heavy sleet */
+const cloudy = [2, 1003, 1006, 1009, 1135];
+const rainy = [
+	3, 1030, 1063, 1150, 1153, 1180, 1183, 1186, 1189, 1192, 1195, 1240, 1243,
+	1246, 1168, 1171, 1198, 1201,
+];
+const stormy = [5, 1069, 1072, 1147, 1204];
+const snowy = [4, 1066, 1087, 1114, 1117];
+const sunny = [0, 1000];
+
 function formatDate(dateGiven) {
 	let dateArray = dateGiven.split('-');
 	let newDate = new Date(
@@ -19,7 +29,7 @@ class LocationInfo {
 
 class CurrentInfo {
 	constructor(current) {
-		// console.log(current);
+		console.log(current);
 		this.fullDateObj = formatDate(this.removeTime(current.last_updated));
 		this.date = this.fullDateObj.date;
 		this.dayOfWeek = this.fullDateObj.dayOfWeek;
@@ -34,6 +44,7 @@ class CurrentInfo {
 		let regex = /^[\d-]*(?<!\s)/g;
 		return date.match(regex)[0];
 	}
+	setTheme() {}
 }
 
 class ForecastInfo {

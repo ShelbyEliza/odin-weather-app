@@ -1,10 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@500&family=Kanit:wght@400;600&family=Oxygen+Mono&display=swap');
 
 :root {
-	--stardust-evening: rgb(186, 186, 221);
 	--galactic-civilization: rgb(66, 40, 131);
 	--naval-night: rgb(0, 29, 61);
 	--morocco: #b96d6dff;
+
+	/* Storm */
+	--stardust-evening: rgb(186, 186, 221);
+	--maharaja: #3c2f4d;
+	--pastel-purple: #aaa1b6;
+
+	/* Cloudy */
+	--dark-souls: #a4a4a4;
+	--mercury: #ebebeb;
+	--tranquili-teal: #7597ab;
+
+	/* Sunny */
+	--blue-mania: #6dc6fa;
+	--broad-daylight: #b7e3fd;
+}
+
+.stormy {
+	background: linear-gradient(var(--maharaja), var(--pastel-purple));
+}
+.cloudy {
+	background: linear-gradient(var(--dark-souls), var(--mercury));
+}
+.sunny {
+	background: linear-gradient(var(--blue-mania), var(--broad-daylight));
 }
 
 html,
