@@ -108,6 +108,8 @@ const { locationInfo, currentInfo, forecastInfo } = await buildInfo(
 await setLocationDOM(locationInfo);
 await setCurrentDOM(currentInfo, unitSelected);
 await setForecastDOM(forecastInfo, unitSelected);
+
+/** */
 // await setCurrentDOM(
 // 	{
 // 		date: '2023-12-11 11:00',

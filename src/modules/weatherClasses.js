@@ -1,14 +1,6 @@
 import { format } from 'date-fns';
-
-/** TODO: stopped at moderate or heavy sleet */
-const cloudy = [2, 1003, 1006, 1009, 1135];
-const rainy = [
-	3, 1030, 1063, 1150, 1153, 1180, 1183, 1186, 1189, 1192, 1195, 1240, 1243,
-	1246, 1168, 1171, 1198, 1201,
-];
-const stormy = [5, 1069, 1072, 1147, 1204];
-const snowy = [4, 1066, 1087, 1114, 1117];
-const sunny = [0, 1000];
+import conditionCodes from './conditions.json';
+// console.log(conditionCodes);
 
 function formatDate(dateGiven) {
 	let dateArray = dateGiven.split('-');
@@ -18,6 +10,13 @@ function formatDate(dateGiven) {
 
 	let formattedDate = format(newDate, 'EEEE-MMMM dd, yyyy').split('-');
 	return { dayOfWeek: formattedDate[0], date: formattedDate[1] };
+}
+function setTheme(themeCode) {
+	let condObj = conditionCodes.find(
+		(condition) => condition.code === themeCode
+	);
+	console.log(condObj);
+	return condObj.cond;
 }
 
 class LocationInfo {
@@ -29,7 +28,8 @@ class LocationInfo {
 
 class CurrentInfo {
 	constructor(current) {
-		console.log(current);
+		// console.log(current);
+		this.theme = setTheme(current.condition.code);
 		this.fullDateObj = formatDate(this.removeTime(current.last_updated));
 		this.date = this.fullDateObj.date;
 		this.dayOfWeek = this.fullDateObj.dayOfWeek;
@@ -39,17 +39,19 @@ class CurrentInfo {
 		this.currentConditionIcon = current.condition.icon;
 		this.precip = current.precip_in;
 		this.humidity = current.humidity;
+		// console.log(this);
 	}
 	removeTime(date) {
 		let regex = /^[\d-]*(?<!\s)/g;
 		return date.match(regex)[0];
 	}
-	setTheme() {}
 }
 
 class ForecastInfo {
 	constructor(date) {
 		let day = date.day;
+		// console.log(date);
+		this.theme = setTheme(day.condition.code);
 		this.fullDateObj = formatDate(date.date);
 		this.date = this.fullDateObj.date;
 		this.dayOfWeek = this.fullDateObj.dayOfWeek;
@@ -70,6 +72,7 @@ class ForecastInfo {
 		this.conditionText = day.condition.text;
 		this.conditionIcon = day.condition.icon;
 		this.humidity = day.avghumidity;
+		console.log(this);
 	}
 }
 

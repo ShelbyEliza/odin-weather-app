@@ -4,6 +4,10 @@ const currentCond = document.getElementById('current-cond');
 const currentTemp = document.getElementById('current-temp');
 const currentHumidity = document.getElementById('current-humidity');
 const currentDescription = document.getElementById('current-description');
+const currentContainer = document.getElementById('top-box');
+const todayContainer = document.getElementById('today-box');
+const tomorrowContainer = document.getElementById('tomorrow-box');
+const nextDayContainer = document.getElementById('next-day-box');
 
 let elsObj = {
 	dates: Array.from(document.querySelectorAll('.f-date')),
@@ -26,6 +30,9 @@ async function setLocationDOM(locationInfo) {
 }
 
 async function setCurrentDOM(currentInfo, unitSelected) {
+	// currentContainer.classList.remove(...Array.from(currentContainer.classList));
+	// currentContainer.classList.add(currentInfo.theme);
+	await setConditionClass(currentContainer, currentInfo);
 	currentDate.textContent = currentInfo.date;
 	currentCond.src = currentInfo.currentConditionIcon;
 	currentCond.alt = currentInfo.currentConditionText;
@@ -33,12 +40,27 @@ async function setCurrentDOM(currentInfo, unitSelected) {
 
 	currentHumidity.textContent = currentInfo.humidity + '%';
 	currentDescription.textContent = currentInfo.currentConditionText;
-	// console.log(currentInfo);
+}
+async function setConditionClass(container, info) {
+	container.classList.remove(...Array.from(container.classList));
+	container.classList.add(info.theme);
 }
 
 async function setForecastDOM(forecastInfos, unitSelected) {
 	for (let i = 0; i < 3; i++) {
-		// console.log(forecastInfos[i]);
+		switch (i) {
+			case 0:
+				await setConditionClass(todayContainer, forecastInfos[i]);
+				break;
+			case 1:
+				await setConditionClass(tomorrowContainer, forecastInfos[i]);
+				break;
+			case 2:
+				await setConditionClass(nextDayContainer, forecastInfos[i]);
+				break;
+			default:
+				return;
+		}
 		elsObj.dates[i].textContent = forecastInfos[i].date;
 		elsObj.days[i].textContent = forecastInfos[i].dayOfWeek;
 		switchForecastUnits(unitSelected, forecastInfos);
