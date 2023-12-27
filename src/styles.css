@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@500&family=Kanit:wght@400;600&family=Oxygen+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:wght@400;700&family=Lato:wght@400;700&family=Lemon&family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lemon&family=Poppins:wght@400;600&family=Oxygen+Mono&display=swap');
 
 :root {
-	--galactic-civilization: rgb(66, 40, 131);
-	--naval-night: rgb(0, 29, 61);
+	--hummus: #eece9a;
 	--morocco: #b96d6dff;
+	--abyssal-waters: #005c63;
 
 	/* Storm */
-	--stardust-evening: rgb(186, 186, 221);
 	--maharaja: #3c2f4d;
 	--pastel-purple: #aaa1b6;
 
@@ -31,7 +29,7 @@ body {
 		-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-	background: var(--mercury);
+	background: var(--hummus);
 }
 
 .material-symbols-outlined {
@@ -58,7 +56,6 @@ header {
 }
 h1 {
 	font-family: 'Lemon', serif;
-	/* font-weight: 500; */
 	font-size: 3rem;
 	margin: 0rem;
 	max-width: 20ch;
@@ -74,10 +71,8 @@ h2 {
 	align-items: center;
 
 	width: 100%;
-	/* border: 1px solid var(--naval-night); */
 	padding: 0.4rem 0rem;
 
-	/* background-color: var(--naval-night); */
 	border-bottom-left-radius: 1rem;
 	border-bottom-right-radius: 1rem;
 }
@@ -138,17 +133,16 @@ button:hover {
 #display {
 	border-radius: 1rem;
 	width: 80%;
-	border: 1px solid var(--broad-daylight);
 }
 #top-box {
 	display: grid;
+
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr auto;
 	align-items: center;
 	justify-items: center;
 
 	border-bottom: 1px solid white;
-	background-color: var(--naval-night);
 	color: white;
 	border-top-right-radius: 1rem;
 	border-top-left-radius: 1rem;
@@ -168,12 +162,10 @@ button:hover {
 .current.title {
 	grid-column: 1 / 2;
 	grid-row: 1 / 2;
-	/* border: 1px solid white; */
 }
 .current.condition-box {
 	grid-column: 4 / 5;
 	grid-row: 1 / 2;
-	/* border: 1px solid white; */
 }
 .current.temp-unit-box {
 	grid-column: 2 / 3;
@@ -232,13 +224,12 @@ button:hover {
 .high,
 .low {
 	margin-left: 1ch;
-	/* border: 1px solid white; */
 }
 .high {
-	color: red;
+	color: var(--morocco);
 }
 .low {
-	color: blue;
+	color: var(--abyssal-waters);
 }
 .humidity-unit-box-forecast {
 	display: flex;

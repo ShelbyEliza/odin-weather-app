@@ -1,5 +1,3 @@
-// import { formatNewDate } from './modules/formatDate.js';
-// import { format } from 'date-fns';
 import './styles.css';
 
 import search from './modules/search.js';
@@ -50,10 +48,6 @@ radioBtns.forEach((btn) => {
 let locale = 'Portland+Oregon';
 const base_URL = 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=';
 const ending_URL = '&days=3';
-/** url examples
- * let url = base_URL + locale + ending_URL;
- * const url = 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=London&days=3';
- */
 
 const options = {
 	method: 'GET',
@@ -108,21 +102,3 @@ const { locationInfo, currentInfo, forecastInfo } = await buildInfo(
 await setLocationDOM(locationInfo);
 await setCurrentDOM(currentInfo, unitSelected);
 await setForecastDOM(forecastInfo, unitSelected);
-
-/** */
-// await setCurrentDOM(
-// 	{
-// 		date: '2023-12-11 11:00',
-// 		temp_C: 9.4,
-// 		temp_F: 48.9,
-// 		currentConditionText: 'Light rain',
-// 		currentConditionIcon: '//cdn.weatherapi.com/weather/64x64/day/296.png',
-// 		precip: 0,
-// 		humidity: 90,
-// 	},
-// 	unitSelected
-// );
-
-// await setLocationDOM({ city: 'Portland', region: 'Oregon' });
-
-// console.log(formatNewDate());

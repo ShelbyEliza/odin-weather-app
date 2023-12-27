@@ -1,6 +1,5 @@
 import { format } from 'date-fns';
 import conditionCodes from './conditions.json';
-// console.log(conditionCodes);
 
 function formatDate(dateGiven) {
 	let dateArray = dateGiven.split('-');
@@ -28,7 +27,6 @@ class LocationInfo {
 
 class CurrentInfo {
 	constructor(current) {
-		// console.log(current);
 		this.theme = setTheme(current.condition.code);
 		this.fullDateObj = formatDate(this.removeTime(current.last_updated));
 		this.date = this.fullDateObj.date;
@@ -39,7 +37,6 @@ class CurrentInfo {
 		this.currentConditionIcon = current.condition.icon;
 		this.precip = current.precip_in;
 		this.humidity = current.humidity;
-		// console.log(this);
 	}
 	removeTime(date) {
 		let regex = /^[\d-]*(?<!\s)/g;
@@ -50,7 +47,6 @@ class CurrentInfo {
 class ForecastInfo {
 	constructor(date) {
 		let day = date.day;
-		// console.log(date);
 		this.theme = setTheme(day.condition.code);
 		this.fullDateObj = formatDate(date.date);
 		this.date = this.fullDateObj.date;

@@ -30,8 +30,6 @@ async function setLocationDOM(locationInfo) {
 }
 
 async function setCurrentDOM(currentInfo, unitSelected) {
-	// currentContainer.classList.remove(...Array.from(currentContainer.classList));
-	// currentContainer.classList.add(currentInfo.theme);
 	await setConditionClass(currentContainer, currentInfo);
 	currentDate.textContent = currentInfo.date;
 	currentCond.src = currentInfo.currentConditionIcon;
