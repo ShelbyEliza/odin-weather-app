@@ -4,9 +4,14 @@ const currentCond = document.getElementById('current-cond');
 const currentTemp = document.getElementById('current-temp');
 const currentHumidity = document.getElementById('current-humidity');
 const currentDescription = document.getElementById('current-description');
+const currentContainer = document.getElementById('top-box');
+const todayContainer = document.getElementById('today-box');
+const tomorrowContainer = document.getElementById('tomorrow-box');
+const nextDayContainer = document.getElementById('next-day-box');
 
 let elsObj = {
 	dates: Array.from(document.querySelectorAll('.f-date')),
+	days: Array.from(document.querySelectorAll('.f-day-of-week')),
 	avgs: Array.from(document.querySelectorAll('.f-avg')),
 	mins: Array.from(document.querySelectorAll('.f-min')),
 	maxes: Array.from(document.querySelectorAll('.f-max')),
@@ -18,11 +23,14 @@ let elsObj = {
 	conditions: Array.from(document.querySelectorAll('.f-conditions')),
 };
 
+const degreeSymbol = '\u00B0';
+
 async function setLocationDOM(locationInfo) {
 	locationTitle.textContent = locationInfo.city + ', ' + locationInfo.region;
 }
 
 async function setCurrentDOM(currentInfo, unitSelected) {
+	await setConditionClass(currentContainer, currentInfo);
 	currentDate.textContent = currentInfo.date;
 	currentCond.src = currentInfo.currentConditionIcon;
 	currentCond.alt = currentInfo.currentConditionText;
@@ -30,12 +38,29 @@ async function setCurrentDOM(currentInfo, unitSelected) {
 
 	currentHumidity.textContent = currentInfo.humidity + '%';
 	currentDescription.textContent = currentInfo.currentConditionText;
-	// console.log(currentInfo);
+}
+async function setConditionClass(container, info) {
+	container.classList.remove(...Array.from(container.classList));
+	container.classList.add(info.theme);
 }
 
 async function setForecastDOM(forecastInfos, unitSelected) {
 	for (let i = 0; i < 3; i++) {
+		switch (i) {
+			case 0:
+				await setConditionClass(todayContainer, forecastInfos[i]);
+				break;
+			case 1:
+				await setConditionClass(tomorrowContainer, forecastInfos[i]);
+				break;
+			case 2:
+				await setConditionClass(nextDayContainer, forecastInfos[i]);
+				break;
+			default:
+				return;
+		}
 		elsObj.dates[i].textContent = forecastInfos[i].date;
+		elsObj.days[i].textContent = forecastInfos[i].dayOfWeek;
 		switchForecastUnits(unitSelected, forecastInfos);
 
 		elsObj.rainChances[i].textContent = forecastInfos[i].rainChance + '%';
@@ -51,22 +76,22 @@ async function setForecastDOM(forecastInfos, unitSelected) {
 async function switchForecastUnits(unitSelected, forecastInfos) {
 	for (let i = 0; i < 3; i++) {
 		if (unitSelected === 'fahrenheit') {
-			elsObj.avgs[i].textContent = forecastInfos[i].avgTemp_F;
-			elsObj.mins[i].textContent = forecastInfos[i].minTemp_F;
-			elsObj.maxes[i].textContent = forecastInfos[i].maxTemp_F;
+			elsObj.avgs[i].textContent = forecastInfos[i].avgTemp_F + degreeSymbol;
+			elsObj.mins[i].textContent = forecastInfos[i].minTemp_F + degreeSymbol;
+			elsObj.maxes[i].textContent = forecastInfos[i].maxTemp_F + degreeSymbol;
 		} else {
-			elsObj.avgs[i].textContent = forecastInfos[i].avgTemp_C;
-			elsObj.mins[i].textContent = forecastInfos[i].minTemp_C;
-			elsObj.maxes[i].textContent = forecastInfos[i].maxTemp_C;
+			elsObj.avgs[i].textContent = forecastInfos[i].avgTemp_C + degreeSymbol;
+			elsObj.mins[i].textContent = forecastInfos[i].minTemp_C + degreeSymbol;
+			elsObj.maxes[i].textContent = forecastInfos[i].maxTemp_C + degreeSymbol;
 		}
 	}
 }
 
 async function switchCurrentUnits(unitSelected, currentInfo) {
 	if (unitSelected === 'fahrenheit') {
-		currentTemp.textContent = currentInfo.temp_F;
+		currentTemp.textContent = currentInfo.temp_F + degreeSymbol;
 	} else {
-		currentTemp.textContent = currentInfo.temp_C;
+		currentTemp.textContent = currentInfo.temp_C + degreeSymbol;
 	}
 }
 

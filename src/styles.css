@@ -1,10 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@500&family=Kanit:wght@400;600&family=Oxygen+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lemon&family=Poppins:wght@400;600&family=Oxygen+Mono&display=swap');
 
 :root {
-	--stardust-evening: rgb(186, 186, 221);
-	--galactic-civilization: rgb(66, 40, 131);
-	--naval-night: rgb(0, 29, 61);
+	--hummus: #eece9a;
 	--morocco: #b96d6dff;
+	--abyssal-waters: #005c63;
+
+	/* Storm */
+	--maharaja: #3c2f4d;
+	--pastel-purple: #aaa1b6;
+
+	/* Cloudy */
+	--dark-souls: #a4a4a4;
+	--mercury: #ebebeb;
+	--tranquili-teal: #7597ab;
+
+	/* Sunny */
+	--blue-mania: #6dc6fa;
+	--broad-daylight: #b7e3fd;
 }
 
 html,
@@ -13,11 +25,11 @@ body {
 	margin: 0 auto;
 
 	font-size: 16px;
-	font-family: 'Oxygen Mono', monospace, -apple-system, BlinkMacSystemFont,
-		'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-		sans-serif;
+	font-family: 'Poppins', sans-serif, sans-serif, 'Oxygen Mono', monospace,
+		-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-	background: var(--stardust-evening);
+	background: var(--hummus);
 }
 
 .material-symbols-outlined {
@@ -35,15 +47,16 @@ header {
 	align-items: center;
 	margin-top: 1rem;
 	margin-bottom: 2rem;
+	padding: 1rem 0rem;
 
-	border: 1px solid var(--naval-night);
+	background-color: var(--maharaja);
+	color: var(--broad-daylight);
 	border-radius: 1rem;
 	text-align: center;
 }
 h1 {
-	font-family: 'Handjet', cursive;
-	font-weight: 500;
-	font-size: 4rem;
+	font-family: 'Lemon', serif;
+	font-size: 3rem;
 	margin: 0rem;
 	max-width: 20ch;
 }
@@ -58,15 +71,13 @@ h2 {
 	align-items: center;
 
 	width: 100%;
-	border: 1px solid var(--naval-night);
 	padding: 0.4rem 0rem;
 
-	background-color: var(--naval-night);
 	border-bottom-left-radius: 1rem;
 	border-bottom-right-radius: 1rem;
 }
 .des {
-	max-width: 80%;
+	max-width: 40ch;
 
 	margin: 0rem;
 	color: white;
@@ -87,6 +98,8 @@ label {
 }
 form {
 	margin: 0.6rem 0.8rem;
+	display: flex;
+	align-items: flex-end;
 }
 input[text] {
 	width: 22ch;
@@ -110,6 +123,9 @@ button {
 	border-radius: 0.4rem;
 
 	height: max-content;
+
+	background-color: var(--broad-daylight);
+	color: var(--maharaja);
 }
 button:hover {
 	cursor: pointer;
@@ -120,13 +136,13 @@ button:hover {
 }
 #top-box {
 	display: grid;
+
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr auto;
 	align-items: center;
 	justify-items: center;
 
 	border-bottom: 1px solid white;
-	background-color: var(--naval-night);
 	color: white;
 	border-top-right-radius: 1rem;
 	border-top-left-radius: 1rem;
@@ -135,22 +151,21 @@ button:hover {
 }
 
 #location {
-	grid-column: 1 / 2;
+	grid-column: 2 / 4;
 	grid-row: 1 / 2;
+	font-family: 'lemon', serif;
 }
 #current-date {
 	grid-column: 1 / 2;
 	grid-row: 2 / 3;
 }
 .current.title {
-	grid-column: 2 / 4;
+	grid-column: 1 / 2;
 	grid-row: 1 / 2;
-	/* border: 1px solid white; */
 }
 .current.condition-box {
 	grid-column: 4 / 5;
 	grid-row: 1 / 2;
-	/* border: 1px solid white; */
 }
 .current.temp-unit-box {
 	grid-column: 2 / 3;
@@ -180,9 +195,13 @@ button:hover {
 	padding-top: 0.2rem;
 	padding-bottom: 0.4rem;
 
-	background-color: aquamarine;
-	color: var(--naval-night);
+	background-color: var(--maharaja);
+	color: var(--mercury);
 	text-align: center;
+	border-right: 1px solid var(--mercury);
+}
+.date-container p:last-child {
+	border: none;
 }
 .date-label {
 	font-size: 1.2rem;
@@ -196,6 +215,7 @@ button:hover {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	justify-items: center;
+	align-items: end;
 
 	padding: 1rem 0.8rem;
 	gap: 0.4rem;
@@ -204,13 +224,12 @@ button:hover {
 .high,
 .low {
 	margin-left: 1ch;
-	/* border: 1px solid white; */
 }
 .high {
-	color: red;
+	color: var(--morocco);
 }
 .low {
-	color: blue;
+	color: var(--abyssal-waters);
 }
 .humidity-unit-box-forecast {
 	display: flex;
@@ -224,4 +243,30 @@ button:hover {
 }
 .val {
 	text-align: center;
+}
+
+#today-box {
+	border-bottom-left-radius: 1rem;
+}
+#next-day-box {
+	border-bottom-right-radius: 1rem;
+}
+.sunny {
+	background: linear-gradient(var(--blue-mania), var(--broad-daylight));
+}
+.cloudy {
+	background: linear-gradient(var(--dark-souls), var(--mercury));
+	color: var(--maharaja);
+}
+.cloudy .current {
+	color: var(--maharaja);
+}
+.rainy {
+	background: linear-gradient(var(--dark-souls), var(--blue-mania));
+}
+.snowy {
+	background: linear-gradient(var(--pastel-purple), var(--mercury));
+}
+.stormy {
+	background: linear-gradient(var(--maharaja), var(--pastel-purple));
 }
